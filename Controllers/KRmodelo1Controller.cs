@@ -19,13 +19,13 @@ namespace KamilaReveloExamenProgreso1.Controllers
         }
 
         // GET: KRmodelo1
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> KRIndex()
         {
             return View(await _context.KRmodelo1.ToListAsync());
         }
 
         // GET: KRmodelo1/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> KRDetails(int? id)
         {
             if (id == null)
             {
@@ -43,7 +43,7 @@ namespace KamilaReveloExamenProgreso1.Controllers
         }
 
         // GET: KRmodelo1/Create
-        public IActionResult Create()
+        public IActionResult KRCreate()
         {
             return View();
         }
@@ -53,19 +53,19 @@ namespace KamilaReveloExamenProgreso1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre,WithTea,Precio,FechaRegristo,FechaFinal")] KRmodelo1 kRmodelo1)
+        public async Task<IActionResult> KRCreate([Bind("Id,Nombre,WithTea,Precio,FechaRegristo,FechaFinal")] KRmodelo1 kRmodelo1)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(kRmodelo1);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(KRIndex));
             }
             return View(kRmodelo1);
         }
 
         // GET: KRmodelo1/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> KREdit(int? id)
         {
             if (id == null)
             {
@@ -85,7 +85,7 @@ namespace KamilaReveloExamenProgreso1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,WithTea,Precio,FechaRegristo,FechaFinal")] KRmodelo1 kRmodelo1)
+        public async Task<IActionResult> KREdit(int id, [Bind("Id,Nombre,WithTea,Precio,FechaRegristo,FechaFinal")] KRmodelo1 kRmodelo1)
         {
             if (id != kRmodelo1.Id)
             {
@@ -110,13 +110,13 @@ namespace KamilaReveloExamenProgreso1.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(KRIndex));
             }
             return View(kRmodelo1);
         }
 
         // GET: KRmodelo1/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> KRDelete(int? id)
         {
             if (id == null)
             {
@@ -145,7 +145,7 @@ namespace KamilaReveloExamenProgreso1.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(KRIndex));
         }
 
         private bool KRmodelo1Exists(int id)
